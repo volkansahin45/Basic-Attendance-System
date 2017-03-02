@@ -29,7 +29,7 @@ $(function () {
             success: function (res) {
                 //if employee use system first. It will be 1 namely 'entering'.
                 directvalue = res.payload[0].direct;
-                console.log("direct : " + direct);
+                console.log("direct : " + directvalue);
             },
             async: false
         });
@@ -109,14 +109,12 @@ $(function () {
     }
 
     //Convert Second to Time (I didn't wrote it, found it)
-    function sformat(s) {
-        var fm = [
-            Math.floor(Math.floor(Math.floor(s / 60) / 60) / 24) % 24,      //DAYS
-            Math.floor(Math.floor(s / 60) / 60) % 60,                          //HOURS
-            Math.floor(s / 60) % 60,                                                //MINUTES
-            s % 60                                                                      //SECONDS
-        ];
-        return $.map(fm, function (v, i) { return ((v < 10) ? '0' : '') + v; }).join(':');
+    function sformat(seconds) {
+        var numdays = ("0" + Math.floor(seconds / 86400)).slice(-2);
+        var numhours = ("0" + Math.floor((seconds % 86400) / 3600)).slice(-2);
+        var numminutes = ("0" + Math.floor(((seconds % 86400) % 3600) / 60)).slice(-2);
+        var numseconds = ("0" + ((seconds % 86400) % 3600) % 60).slice(-2);
+        return numdays + ":" + numhours + ":" + numminutes + ":" + numseconds;
     }
 })
 

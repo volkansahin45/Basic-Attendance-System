@@ -50,8 +50,8 @@ exports.worktime = function (req, res) {
   console.log(time);
   db.query("SELECT fk_user as userid, SUM(UNIX_TIMESTAMP(time) - UNIX_TIMESTAMP(GIRIS_ZAMANI)) AS fark FROM" +
     "(SELECT CIK.*,(SELECT MAX(GIR.time) FROM psh_raw GIR WHERE GIR.fk_user = CIK.fk_user AND GIR.time <= CIK.time and GIR.direct = 1) AS GIRIS_ZAMANI" +
-    " FROM `psh_raw` CIK WHERE CIK.direct = 0 AND date_format( time, '%Y-%m' ) between ? and ?" +
-    ") AS V1 GROUP BY fk_user", [time, time], function (err, result) {
+    " FROM `psh_raw` CIK WHERE CIK.direct = 0 AND date_format( time, '%Y-%m' ) = ?" +
+    ") AS V1 GROUP BY fk_user", [time], function (err, result) {
       if (err) {
         return util.send(res, 400, "Database Error");
       }
