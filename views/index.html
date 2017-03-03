@@ -29,11 +29,22 @@
       </table>
     </div>
     <div class="row">
-      <div class="col-xs-5">
-        <input class="form-control" id="date" type="month" placeholder="month">
+      <h4 class="col-xs-12" style="text-align: center">Please select start and finish date for see working times</h4>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <label for="startDate">Start Date</label>
+        <input class="form-control" id="startDate" type="month" placeholder="Start Date">
       </div>
-      <div class="col-xs-7">
-        <button data-toggle="modal" data-target="#worktimes" type="button" class="btn btn-primary worktime" style="width: 100%">See All Employeer's Work Time</button>
+      <div class="col-xs-6">
+        <label for="finishDate">Finish Date</label>
+        <input class="form-control" id="finishDate" type="month" placeholder="Finish Date">
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px">
+      <div class="col-xs-12">
+        <button data-toggle="modal" data-target="#worktimes" type="button" class="btn btn-primary worktime" style="width: 100%">See Work Time</button>
       </div>
     </div>
 
