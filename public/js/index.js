@@ -93,7 +93,6 @@ $(function () {
             });
         }
         else {
-            alert("else bloğu");
             $(".modal-body").html("").html("<h4>Please select start and finish date</h4>");
         }
 
