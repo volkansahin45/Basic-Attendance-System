@@ -12,7 +12,6 @@ $(function () {
         for (var i = 0; i < usersLength; i++) {
             var userid = users[i].uid;
             var username = users[i].name;
-            //var radioButtons = '<label class="radio-inline"><input type="radio" name="optradio">General</label><label class="radio-inline"><input type="radio" name="optradio">Vacation</label><label class="radio-inline"><input type="radio" name="optradio">Doctor</label>'
             var selectedList = '<div class="form-group"><select class="form-control" id="selectreason' + userid + '"><option>General</option><option>Vacation</option><option>Doctor</option></select></div>';
             $(".users tbody").append("<tr><td id=" + userid + ">" + userid + "</td><td>" + username + "</td><td>" + selectedList + "</td></tr>");
         }
@@ -84,31 +83,35 @@ $(function () {
 
     //see all employeer's work time click event
     $(document).on("click", ".worktime", function (event) {
-        var date = $("#date").val();
-        $(".modal-body p").text("");
-        if (date) {
-            $.post("./worktime", { time: date }, function (res) {
+        var startDate = $("#startDate").val();
+        var finishDate = $("#finishDate").val();
+
+        if (startDate || finishDate) {
+            $.post("./worktime", { startDate: startDate, finishDate : finishDate }, function (res) {
                 console.log(res);
                 fillModal(res.payload);
             });
         }
         else {
-            $(".modal-body p").text("Please select a date");
+            alert("else bloğu");
+            $(".modal-body").html("").html("<h4>Please select start and finish date</h4>");
         }
 
     });
 
     //Fill Modal with user id and working times
     function fillModal(workingtimes) {
+        var content = $(".timetable tbody").html();
         workingtimes.forEach(function (element) {
-            var time = sformat(element.fark);
-            var content = $(".modal-body p").html();
-            console.log("Content : " + content);
-            $(".modal-body p").html(content + " <br> " + "User Id : " + element.userid + " = " + time);
+            var id = element.fk_user;
+            var namesurname = element.name;
+            var date = element.date;
+            var time = sformat(element.workingtime);
+            $(".timetable tbody").append("<tr><td>" + id + "</td><td>" + namesurname + "</td><td>" + date + "</td><td>" + time + "</td></tr>");
         }, this);
     }
 
-    //Convert Second to Time (I didn't wrote it, found it)
+    //Convert Second to Time (Taken from web)
     function sformat(seconds) {
         var numdays = ("0" + Math.floor(seconds / 86400)).slice(-2);
         var numhours = ("0" + Math.floor((seconds % 86400) / 3600)).slice(-2);
