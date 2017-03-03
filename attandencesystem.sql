@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 03 Mar 2017, 21:41:50
+-- Üretim Zamanı: 03 Mar 2017, 22:04:53
 -- Sunucu sürümü: 5.7.14
 -- PHP Sürümü: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Veritabanı: `attendancesystem`
+-- Veritabanı: `attandencesystem`
 --
 
 -- --------------------------------------------------------
