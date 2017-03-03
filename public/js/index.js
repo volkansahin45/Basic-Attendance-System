@@ -93,7 +93,7 @@ $(function () {
             });
         }
         else {
-            $(".modal-body").html("").html("<h4>Please select start and finish date</h4>");
+            $(".workingtimestable").html("").html("<h4>Please select start and finish date</h4>");
         }
 
     });

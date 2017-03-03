@@ -54,6 +54,7 @@ exports.worktime = function (req, res) {
 
   db.query(query, [startDate, finishDate], function (err, result) {
       if (err) {
+        console.log(err);
         return util.send(res, 400, "Database Error");
       }
       util.send(res, 200, "Success", result);
