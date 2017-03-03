@@ -100,7 +100,7 @@ $(function () {
 
     //Fill Modal with user id and working times
     function fillModal(workingtimes) {
-        var content = $(".timetable tbody").html();
+        var content = $(".timetable tbody").html("");
         workingtimes.forEach(function (element) {
             var id = element.fk_user;
             var namesurname = element.name;
