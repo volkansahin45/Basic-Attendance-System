@@ -86,8 +86,6 @@ $(function () {
         var startDate = $("#startDate").val();
         var finishDate = $("#finishDate").val();
 
-        console.log(startDate + " -- " + finishDate);
-
         if (startDate && finishDate) {
             $.post("./worktime", { startDate: startDate, finishDate : finishDate }, function (res) {
                 console.log(res);
