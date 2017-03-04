@@ -86,12 +86,15 @@ $(function () {
         var startDate = $("#startDate").val();
         var finishDate = $("#finishDate").val();
 
-        if (startDate || finishDate) {
+        console.log(startDate + " -- " + finishDate);
+
+        if (startDate && finishDate) {
             $.post("./worktime", { startDate: startDate, finishDate : finishDate }, function (res) {
                 console.log(res);
                 fillModal(res.payload);
             });
         }
+        
         else {
             $(".workingtimestable").html("").html("<h4>Please select start and finish date</h4>");
         }
@@ -100,6 +103,7 @@ $(function () {
 
     //Fill Modal with user id and working times
     function fillModal(workingtimes) {
+        var modaltablebody = $(".workingtimestable").html('<div class="table-responsive"><table class="table table-striped table-hover timetable"><thead><tr><th>User ID</th><th>Name Surname</th><th>Date</th><th>Working Time(DD:HH:MM:SS)</th></tr></thead><tbody></tbody></table></div>');
         var content = $(".timetable tbody").html("");
         workingtimes.forEach(function (element) {
             var id = element.fk_user;
