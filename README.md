@@ -3,9 +3,9 @@
 
 Import attandencesystem.sql
 
-run "npm i" on command
+run "npm i" on command line
 
-edit db.js fileaccording to your phpmyadmin username and password
+edit db.js file according to your phpmyadmin username and password
 
 run "node app.js" command
 
