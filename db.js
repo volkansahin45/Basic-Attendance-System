@@ -6,26 +6,16 @@ var db_config = {
   database : 'attandence'
 }
 var connection;
+	connection = mysql.createConnection(db_config);
+	connection.connect(function(err) {
+		if(err) {
+			console.log('Database connection error:', err);
+		}
+	});
 
-function handleDisconnect() {
-  connection = mysql.createConnection(db_config);
+/* to prevent losing connection */
+setInterval(function () {
+    connection.query('SELECT 1', [], function () {})
+}, 10000)
 
-  connection.connect(function(err) {
-    if(err) {
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000);
-    }
-  });
-
-  connection.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-      handleDisconnect();
-    } else {
-      throw err;
-    }
-  });
-}
-
-handleDisconnect();
 module.exports = connection;
