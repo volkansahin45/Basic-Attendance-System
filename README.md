@@ -1,4 +1,4 @@
-# Basic Attandance System App
+# Basic Attendance System App
 <mysql, node.js, bootstrap, jQuery>
 
 Import attendancesystem.sql
