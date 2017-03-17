@@ -1,7 +1,7 @@
 # Basic Attandance System App
 <mysql, node.js, bootstrap, jQuery>
 
-Import attandencesystem.sql
+Import attendancesystem.sql
 
 run "npm i" on command line
 
@@ -15,7 +15,7 @@ That's it.
 
 ------------------------------------
 
-attandencesystem.sql dosyasını import edin.
+attendancesystem.sql dosyasını import edin.
 
 Komut satırında "npm i" komutunu çalıştırın.
 
