@@ -3,7 +3,7 @@ var db_config = {
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'attandence'
+  database : 'attendance'
 }
 var connection;
 	connection = mysql.createConnection(db_config);
